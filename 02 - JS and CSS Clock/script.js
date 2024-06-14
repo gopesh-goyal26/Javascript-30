@@ -16,6 +16,20 @@ const updateClock = () => {
         secondHand.style.transition = "";
     }
 
+    if (minutes === 0){
+        minHand.style.transition = "none";
+    } else{
+        minHand.style.transition = "";
+    }
+
+    if (((hours * 3600) + (minutes * 60) + seconds) === 43200){
+        hourHand.style.transition = "none";
+    } else{
+        hourHand.style.transition = "";
+    }
+
+
+
     secondHand.style.transform = `rotate(${seconds * 6 + 90}deg)`;
     minHand.style.transform = `rotate(${((minutes * 60) + seconds) * 0.1 + 90}deg)`;
     hourHand.style.transform = `rotate(${((hours * 3600) + (minutes * 60) + seconds) * (1/120) + 90}deg)`;
