@@ -43,4 +43,16 @@ html {
     background: black;
     position: absolute;
     top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 1s linear;
+  }
+
+  .hour-hand{
+    width: 35%;
+    right: 50%;
+  }
+
+  .second-hand{
+    background: red;
   }
