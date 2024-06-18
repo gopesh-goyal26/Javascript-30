@@ -16,14 +16,32 @@ const matchInput = async inputVal => {
 }
 
 const displayResult = (inputVal, cityArr) => {
-    suggestionsList.innerHTML = "";
+
+    const regex = new RegExp(inputVal, "gi");
+    const fragment = document.createDocumentFragment();
+    
+    while (suggestionsList.firstChild) {
+        suggestionsList.removeChild(suggestionsList.firstChild);
+      };
+
     cityArr.forEach(city => {
-        const regex = new RegExp(inputVal, "gi");
         const cityName = city.city.replace(regex, `<span class="hl">${inputVal}</span>`);
         const stateName = city.state.replace(regex, `<span class="hl">${inputVal}</span>`);
-        suggestionsList.innerHTML += 
-        `<li><span>${cityName}, ${stateName}</span> <span class="population">${city.population}</span></li>`
+
+        const newLi = document.createElement("li");
+        const nameEl = document.createElement("span");
+        const populationEl = document.createElement("span");
+
+        nameEl.innerHTML = `${cityName}, ${stateName}`;
+        populationEl.classList.add("population");
+        populationEl.textContent = city.population;
+        
+        newLi.appendChild(nameEl);
+        newLi.appendChild(populationEl);
+        fragment.appendChild(newLi);
     });
+
+    suggestionsList.appendChild(fragment);
 }
 
 searchInput.addEventListener('input', function() {
