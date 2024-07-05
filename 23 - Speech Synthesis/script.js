@@ -17,6 +17,7 @@ function addVoices(){
 };
 
 function start() {
+    speechSynthesis.cancel();
     msg.voice = voices.find(voice => voice.name === voicesDropdown.selectedOptions[0].value);
 
     options.forEach(option => {
@@ -24,8 +25,12 @@ function start() {
     });
 
     speechSynthesis.speak(msg);
-    debugger
+}
+
+function stop(){
+    speechSynthesis.cancel();
 }
 
 speechSynthesis.addEventListener('voiceschanged', addVoices);
 speakButton.addEventListener('click', start);
+stopButton.addEventListener('click', stop);
