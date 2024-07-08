@@ -16,9 +16,10 @@ function handleEnter(){
         top: dropdownCoords.top - navCoords.top,
         left: dropdownCoords.left - navCoords.left
     }
-
-    Object.keys(coords).forEach(key => background.style[key] = `${coords[key]}px`);
-
+    
+    background.style.setProperty("width", `${coords.width}px`);
+    background.style.setProperty("height", `${coords.height}px`);
+    background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px`);
 }
 
 function handleLeave(){
