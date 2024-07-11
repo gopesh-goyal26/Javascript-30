@@ -24,7 +24,7 @@ const randomHole = () => {
 
 const moleUp = () => {
     clearTimeout(callAgain);
-    const time = randomTimer(4000, 10000);
+    const time = randomTimer(400, 1000);
     const hole = randomHole();
     if(!isOver){
         hole.classList.add("up");
